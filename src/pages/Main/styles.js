@@ -27,7 +27,7 @@ export const Form = styled.form`
 
     input{
         flex: 1;
-        border: 1px solid #ddd;
+        border: 1px solid ${props => (props.error ? '#FF0000' : '#EEE')};
         padding: 10px 15px;
         border-radius: 4px;
         font-size: 17px;
@@ -77,9 +77,9 @@ const animate = keyframes`
     }
 `;
 
-export const SubmitButton = styled.button.attrs((props) => ({
+export const SubmitButton = styled.button.attrs(({ loadingButton }) => ({
     type: "submit",
-    disabled: props.loadingButton, // Garantir que seja booleano
+    disabled: loadingButton, // Evita passar `loadingButton` diretamente para o DOM
   }))`
     background: #0d2636;
     border: 0;
